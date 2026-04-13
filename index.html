@@ -8,54 +8,22 @@
   /* ── Reset & Base ── */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#162d5a;--bg2:#1a3568;--card:#1e3f7a;--accent:#4fc3f7;--accent2:#a78bfa;
-    --gold:#f5b731;--green:#34d399;--red:#f87171;--orange:#fb923c;
-    --text:#e8ecf4;--muted:#9cb0cc;
-    --social:#f87171;--tech:#4fc3f7;--eco:#34d399;--econ:#f5b731;--pol:#a78bfa;
-    --preferable:#a78bfa;--probable:#cd7f32;--plausible:#fb923c;--possible:#f5b731;
-    /* ── Section accent colours ── */
-    --sec-story:#e0a4ff;--sec-concept:#4fc3f7;--sec-history:#60a5fa;
-    --sec-cone:#a78bfa;--sec-case:#f5b731;--sec-risk:#fb923c;
-    --sec-guard:#34d399;--sec-quiz:#f472b6;--sec-myth:#c084fc;
-    --sec-reflect:#4fc3f7;--sec-voice:#fbbf24;--sec-feedback:#34d399;
+    --bg:#0a0e1a;--bg2:#111827;--card:#1a2236;--accent:#00d4ff;--accent2:#7c3aed;
+    --gold:#f59e0b;--green:#10b981;--red:#ef4444;--orange:#f97316;
+    --text:#e2e8f0;--muted:#94a3b8;
+    --social:#ef4444;--tech:#00d4ff;--eco:#10b981;--econ:#f59e0b;--pol:#7c3aed;
+    --preferable:#7c3aed;--probable:#a0522d;--plausible:#f97316;--possible:#f59e0b;
   }
   html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;position:relative}
-  body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 30% 15%,#2a4d8e 0%,#1a3568 40%,#112450 75%,#0d1c3e 100%)}
-  body::after{content:'';position:fixed;inset:0;z-index:-1;background-image:
-    radial-gradient(2px 2px at 10% 15%,rgba(255,255,255,.85),transparent),
-    radial-gradient(1.5px 1.5px at 25% 35%,rgba(255,255,255,.6),transparent),
-    radial-gradient(2px 2px at 45% 8%,rgba(220,235,255,.75),transparent),
-    radial-gradient(1.5px 1.5px at 60% 25%,rgba(255,255,255,.55),transparent),
-    radial-gradient(2.5px 2.5px at 75% 12%,rgba(200,225,255,.9),transparent),
-    radial-gradient(1.5px 1.5px at 85% 40%,rgba(255,255,255,.6),transparent),
-    radial-gradient(2px 2px at 15% 55%,rgba(255,255,255,.55),transparent),
-    radial-gradient(1.5px 1.5px at 35% 65%,rgba(255,255,255,.45),transparent),
-    radial-gradient(2.5px 2.5px at 55% 50%,rgba(200,225,255,.7),transparent),
-    radial-gradient(1.5px 1.5px at 70% 60%,rgba(255,255,255,.5),transparent),
-    radial-gradient(2px 2px at 90% 55%,rgba(255,255,255,.65),transparent),
-    radial-gradient(1.5px 1.5px at 5% 75%,rgba(255,255,255,.4),transparent),
-    radial-gradient(2px 2px at 22% 82%,rgba(200,225,255,.6),transparent),
-    radial-gradient(1.5px 1.5px at 48% 78%,rgba(255,255,255,.5),transparent),
-    radial-gradient(2.5px 2.5px at 65% 85%,rgba(200,225,255,.75),transparent),
-    radial-gradient(1.5px 1.5px at 80% 72%,rgba(255,255,255,.45),transparent),
-    radial-gradient(2px 2px at 92% 80%,rgba(255,255,255,.6),transparent),
-    radial-gradient(1.5px 1.5px at 18% 92%,rgba(255,255,255,.4),transparent),
-    radial-gradient(1.5px 1.5px at 40% 95%,rgba(200,225,255,.5),transparent),
-    radial-gradient(2px 2px at 58% 90%,rgba(255,255,255,.55),transparent),
-    radial-gradient(1.5px 1.5px at 78% 95%,rgba(255,255,255,.45),transparent),
-    radial-gradient(2.5px 2.5px at 33% 18%,rgba(200,225,255,.8),transparent),
-    radial-gradient(1.5px 1.5px at 52% 32%,rgba(255,255,255,.5),transparent),
-    radial-gradient(2px 2px at 88% 22%,rgba(200,225,255,.65),transparent);
-    pointer-events:none}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
   a{color:var(--accent);text-decoration:none}
 
   /* ── Hero ── */
   .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:2rem}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(79,195,247,.14),transparent 55%),radial-gradient(ellipse at 80% 15%,rgba(79,195,247,.1),transparent 40%),radial-gradient(ellipse at 15% 25%,rgba(167,139,250,.08),transparent 45%);pointer-events:none}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(0,212,255,.08),transparent 60%),radial-gradient(ellipse at 20% 20%,rgba(124,58,237,.06),transparent 50%);pointer-events:none}
   .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.15;max-width:900px}
-  .hero h1 span.opp{color:#34d399;text-shadow:0 0 30px rgba(52,211,153,.3)}
-  .hero h1 span.risk{color:#f87171;text-shadow:0 0 30px rgba(248,113,113,.3)}
+  .hero h1 span.opp{color:var(--green)}
+  .hero h1 span.risk{color:var(--red)}
   .hero p.sub{font-size:1.15rem;color:var(--muted);margin-top:1rem;max-width:650px}
   .hero .scroll-hint{margin-top:3rem;animation:bounce 2s infinite}
   @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
@@ -66,7 +34,7 @@
   .hero>*{position:relative;z-index:1}
 
   /* ── Navigation ── */
-  nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);background:rgba(22,45,90,.85);border-bottom:1px solid rgba(79,195,247,.12);display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:.8rem 1rem;flex-wrap:wrap}
+  nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);background:rgba(10,14,26,.85);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:.8rem 1rem;flex-wrap:wrap}
   nav a{color:var(--muted);font-size:.85rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;transition:.2s}
   nav a:hover,nav a.active{color:var(--accent)}
 
@@ -75,7 +43,7 @@
   .past-card{background:var(--card);border-radius:14px;padding:0;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:.3s;cursor:pointer}
   .past-card:hover{border-color:var(--accent);transform:translateY(-4px)}
   .past-card .card-header{padding:1.25rem 1.5rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(255,255,255,.04)}
-  .past-card .card-header .yr{font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:999px;background:rgba(79,195,247,.1);color:var(--accent)}
+  .past-card .card-header .yr{font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:999px;background:rgba(0,212,255,.1);color:var(--accent)}
   .past-card .card-header .impact-tag{font-size:.65rem;font-weight:700;padding:.15rem .5rem;border-radius:999px;text-transform:uppercase}
   .past-card .card-header .impact-tag.opp-tag{background:rgba(16,185,129,.12);color:var(--green)}
   .past-card .card-header .impact-tag.risk-tag{background:rgba(239,68,68,.12);color:var(--red)}
@@ -118,7 +86,6 @@
   .scenario-panel{background:var(--card);border-radius:16px;padding:2rem;margin-top:1.5rem;border:1px solid rgba(255,255,255,.06);display:none;animation:fadeUp .4s ease}
   .scenario-panel.show{display:block}
   @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
   .scenario-panel h3{font-size:1.3rem;margin-bottom:.25rem}
   .scenario-panel .badge{display:inline-block;font-size:.7rem;padding:.15rem .55rem;border-radius:999px;font-weight:700;margin-right:.4rem;text-transform:uppercase}
   .scenario-panel .tags{margin:.75rem 0}
@@ -129,7 +96,7 @@
   .scenario-panel .opp-risk .risk-box{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
   .opp-box h4{color:var(--green);margin-bottom:.4rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
   .risk-box h4{color:var(--red);margin-bottom:.4rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
-  .guardrails{margin-top:1.25rem;padding:1rem;background:rgba(79,195,247,.05);border:1px solid rgba(79,195,247,.15);border-radius:10px}
+  .guardrails{margin-top:1.25rem;padding:1rem;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.15);border-radius:10px}
   .guardrails h4{color:var(--accent);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem}
   .guardrails ul{padding-left:1.2rem;color:var(--muted);font-size:.88rem}
   .guardrails li{margin-bottom:.3rem}
@@ -153,7 +120,7 @@
   .case-card .icon{font-size:2rem;margin-bottom:.75rem}
   .case-card h3{font-size:1.1rem;margin-bottom:.5rem}
   .case-card p{color:var(--muted);font-size:.88rem;line-height:1.6}
-  .case-card .tag{display:inline-block;font-size:.7rem;padding:.15rem .5rem;border-radius:999px;background:rgba(79,195,247,.1);color:var(--accent);margin-top:.75rem;font-weight:600}
+  .case-card .tag{display:inline-block;font-size:.7rem;padding:.15rem .5rem;border-radius:999px;background:rgba(0,212,255,.1);color:var(--accent);margin-top:.75rem;font-weight:600}
   .case-card .ref-link{display:inline-flex;align-items:center;gap:.35rem;margin-top:1rem;padding-top:.85rem;border-top:1px solid rgba(255,255,255,.06);font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:600;letter-spacing:.02em;transition:.2s;word-break:break-word}
   .case-card .ref-link:hover{color:var(--accent2);transform:translateX(3px)}
   .case-card .ref-link .ref-icon{font-size:.85rem;flex-shrink:0}
@@ -162,10 +129,10 @@
   /* ── Risk / Benefit Matrix ── */
   .matrix{display:grid;grid-template-columns:1fr;gap:0;margin-top:1.5rem;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
   .matrix-row{display:grid;grid-template-columns:200px 1fr 1fr 120px;align-items:stretch}
-  .matrix-row.header{background:rgba(79,195,247,.1)}
+  .matrix-row.header{background:rgba(0,212,255,.1)}
   .matrix-row.header .cell{font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--accent)}
   .matrix-row:not(.header){background:var(--card);border-top:1px solid rgba(255,255,255,.04)}
-  .matrix-row:not(.header):hover{background:rgba(30,63,122,.9)}
+  .matrix-row:not(.header):hover{background:rgba(26,34,54,.9)}
   .cell{padding:.85rem 1rem;font-size:.85rem;color:var(--muted);display:flex;align-items:center}
   .cell.area{font-weight:600;color:var(--text)}
   .risk-level{display:inline-block;padding:.2rem .6rem;border-radius:999px;font-size:.7rem;font-weight:700}
@@ -212,14 +179,14 @@
   .learn-card .learn-icon{font-size:2rem;margin-bottom:.75rem;display:block}
   .learn-card h3{font-size:1.05rem;margin-bottom:.5rem;color:var(--text)}
   .learn-card p{color:var(--muted);font-size:.88rem;line-height:1.65}
-  .learn-card .learn-tag{display:inline-block;font-size:.68rem;padding:.15rem .55rem;border-radius:999px;font-weight:700;margin-top:.75rem;text-transform:uppercase;background:rgba(79,195,247,.1);color:var(--accent)}
+  .learn-card .learn-tag{display:inline-block;font-size:.68rem;padding:.15rem .55rem;border-radius:999px;font-weight:700;margin-top:.75rem;text-transform:uppercase;background:rgba(0,212,255,.1);color:var(--accent)}
 
   /* ── Reflections / Q&A Section ── */
   .qa-container{margin-top:1.5rem}
   .qa-item{background:var(--card);border-radius:14px;margin-bottom:1rem;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:.3s}
-  .qa-item:hover{border-color:rgba(79,195,247,.3)}
+  .qa-item:hover{border-color:rgba(0,212,255,.3)}
   .qa-question{padding:1.25rem 1.5rem;display:flex;align-items:center;gap:.75rem;cursor:pointer;user-select:none;transition:.2s}
-  .qa-question:hover{background:rgba(79,195,247,.03)}
+  .qa-question:hover{background:rgba(0,212,255,.03)}
   .qa-question .q-number{min-width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-size:.85rem;font-weight:800;color:#fff}
   .qa-question h3{font-size:.95rem;flex:1;line-height:1.4;font-weight:600}
   .qa-question .q-arrow{font-size:1.2rem;color:var(--muted);transition:.3s;transform:rotate(0deg)}
@@ -230,20 +197,20 @@
   .qa-answer-inner p{margin-bottom:.75rem}
   .qa-answer-inner strong{color:var(--text)}
   .qa-answer-inner .highlight-box{padding:1rem 1.25rem;border-radius:10px;margin:.75rem 0;font-size:.88rem;line-height:1.6}
-  .qa-answer-inner .highlight-box.process{background:rgba(79,195,247,.06);border:1px solid rgba(79,195,247,.15)}
+  .qa-answer-inner .highlight-box.process{background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15)}
   .qa-answer-inner .highlight-box.insight{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.15)}
   .qa-answer-inner .highlight-box.future{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15)}
   .qa-answer-inner .highlight-box.challenge{background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.15)}
 
   /* ── Key Takeaways Banner ── */
-  .takeaway-banner{background:linear-gradient(135deg,rgba(79,195,247,.06),rgba(167,139,250,.06),rgba(52,211,153,.04));border:1px solid rgba(79,195,247,.12);border-radius:16px;padding:2rem;margin-top:2rem;text-align:center}
-  .takeaway-banner h3{font-size:1.2rem;margin-bottom:1rem;background:linear-gradient(135deg,#4fc3f7,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .takeaway-banner{background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(124,58,237,.08));border:1px solid rgba(0,212,255,.15);border-radius:16px;padding:2rem;margin-top:2rem;text-align:center}
+  .takeaway-banner h3{font-size:1.2rem;margin-bottom:1rem;color:var(--accent)}
   .takeaway-items{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
   .takeaway-chip{padding:.5rem 1.25rem;border-radius:999px;font-size:.85rem;font-weight:600;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--text);transition:.3s}
-  .takeaway-chip:hover{border-color:var(--accent);background:rgba(79,195,247,.08)}
+  .takeaway-chip:hover{border-color:var(--accent);background:rgba(0,212,255,.08)}
 
   /* ── Stories / Narrative Section ── */
-  .stories-intro{text-align:center;max-width:780px;margin:0 auto 2.5rem;padding:1.5rem;background:linear-gradient(135deg,rgba(224,164,255,.06),rgba(167,139,250,.06));border:1px solid rgba(224,164,255,.15);border-radius:16px}
+  .stories-intro{text-align:center;max-width:780px;margin:0 auto 2.5rem;padding:1.5rem;background:linear-gradient(135deg,rgba(245,158,11,.06),rgba(239,68,68,.06));border:1px solid rgba(245,158,11,.15);border-radius:16px}
   .stories-intro p{color:var(--muted);font-size:.95rem;line-height:1.7}
   .stories-intro strong{color:var(--text)}
 
@@ -251,7 +218,9 @@
   .story-card{background:var(--card);border-radius:18px;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,.06);transition:.3s;display:grid;grid-template-columns:260px 1fr;align-items:stretch}
   @media(max-width:760px){.story-card{grid-template-columns:1fr}}
   .story-card:hover{border-color:var(--accent);transform:translateY(-3px)}
-  .story-portrait{background:linear-gradient(145deg,#7c3aed,#4fc3f7);display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;color:#fff;position:relative}
+  .story-portrait{background:linear-gradient(145deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;color:#fff;position:relative}
+  .story-card:nth-child(2) .story-portrait{background:linear-gradient(145deg,var(--green),#0891b2)}
+  .story-card:nth-child(3) .story-portrait{background:linear-gradient(145deg,var(--gold),var(--orange))}
   .story-portrait .avatar{font-size:3.5rem;margin-bottom:.75rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
   .story-portrait .name{font-size:1.15rem;font-weight:800;margin-bottom:.25rem;font-family:Georgia,serif}
   .story-portrait .subtitle{font-size:.78rem;opacity:.9;letter-spacing:.03em}
@@ -259,7 +228,7 @@
   .story-body h3{font-size:1.15rem;margin-bottom:.85rem;color:var(--text)}
   .story-body .story-text{color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:1rem}
   .story-body .story-text em{color:var(--text);font-style:italic}
-  .story-body .story-question{margin-top:1rem;padding:.85rem 1.1rem;background:rgba(79,195,247,.05);border-left:3px solid var(--accent);border-radius:8px;font-size:.88rem;color:var(--text);font-style:italic}
+  .story-body .story-question{margin-top:1rem;padding:.85rem 1.1rem;background:rgba(0,212,255,.05);border-left:3px solid var(--accent);border-radius:8px;font-size:.88rem;color:var(--text);font-style:italic}
   .story-body .story-question strong{color:var(--accent);font-style:normal;font-weight:700}
 
   /* ── Perspective Poll (site-impacting) ── */
@@ -269,7 +238,7 @@
   .perspective-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
   .pers-btn{padding:1.25rem 1rem;border-radius:14px;border:2px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;transition:.3s;font-family:inherit;font-size:.85rem;font-weight:600;line-height:1.4;text-align:center}
   .pers-btn .p-emoji{font-size:2rem;display:block;margin-bottom:.5rem}
-  .pers-btn:hover{transform:translateY(-3px);border-color:rgba(79,195,247,.3)}
+  .pers-btn:hover{transform:translateY(-3px);border-color:rgba(0,212,255,.3)}
   .pers-btn.voted[data-stance="optimistic"]{border-color:var(--green);background:rgba(16,185,129,.08)}
   .pers-btn.voted[data-stance="cautious"]{border-color:var(--orange);background:rgba(249,115,22,.08)}
   .pers-btn.voted[data-stance="uncertain"]{border-color:var(--gold);background:rgba(245,158,11,.08)}
@@ -285,7 +254,7 @@
   .pers-bar-row[data-s="uncertain"] .pbr-fill{background:linear-gradient(to right,var(--gold),#fbbf24)}
   .pers-bar-row[data-s="skeptical"] .pbr-fill{background:linear-gradient(to right,var(--red),#f87171)}
   .pers-bar-row .pbr-pct{min-width:44px;text-align:right;color:var(--muted);font-weight:700}
-  .pers-theme-note{margin-top:1.5rem;font-size:.8rem;color:var(--muted);font-style:italic;padding:.75rem;background:rgba(79,195,247,.04);border-radius:8px;display:none}
+  .pers-theme-note{margin-top:1.5rem;font-size:.8rem;color:var(--muted);font-style:italic;padding:.75rem;background:rgba(0,212,255,.04);border-radius:8px;display:none}
   .pers-theme-note.show{display:block}
 
   /* ── Site theme variants driven by poll ── */
@@ -300,7 +269,7 @@
   .note-form{max-width:720px;margin:0 auto 2.5rem;background:var(--card);border-radius:16px;padding:1.75rem;border:1px solid rgba(255,255,255,.08)}
   .note-form label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;margin-bottom:.4rem;display:block}
   .note-form textarea{width:100%;padding:.85rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:var(--text);font-size:.92rem;font-family:inherit;min-height:90px;resize:vertical;line-height:1.5;margin-bottom:1rem}
-  .note-form textarea:focus{outline:none;border-color:var(--accent);background:rgba(79,195,247,.04)}
+  .note-form textarea:focus{outline:none;border-color:var(--accent);background:rgba(0,212,255,.04)}
   .note-form .note-row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
   .note-form input[type="text"]{flex:1;min-width:180px;padding:.7rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:var(--text);font-size:.88rem;font-family:inherit}
   .note-form input[type="text"]:focus{outline:none;border-color:var(--accent)}
@@ -309,7 +278,7 @@
   .color-swatch.selected{border-color:#fff;transform:scale(1.15)}
   .color-swatch:hover{transform:scale(1.1)}
   .note-form .post-btn{padding:.75rem 1.5rem;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;cursor:pointer;font-size:.88rem;font-weight:700;font-family:inherit;transition:.25s}
-  .note-form .post-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(79,195,247,.25)}
+  .note-form .post-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,212,255,.25)}
   .note-form .char-count{font-size:.72rem;color:var(--muted);text-align:right;margin-top:-.5rem;margin-bottom:.5rem}
 
   .notes-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;margin-top:1.5rem;min-height:200px}
@@ -336,24 +305,24 @@
   .prompt-tab:hover{color:var(--accent);border-color:var(--accent)}
   .prompt-tab.active{background:var(--accent);color:#000;border-color:var(--accent);font-weight:700}
   .prompt-content{background:var(--card);border-radius:14px;padding:1.75rem 2rem;border:1px solid rgba(255,255,255,.06)}
-  .prompt-content .prompt-q{font-size:1rem;color:var(--text);font-style:italic;margin-bottom:1.25rem;line-height:1.6;padding:1rem 1.25rem;background:rgba(79,195,247,.04);border-left:3px solid var(--accent);border-radius:8px}
+  .prompt-content .prompt-q{font-size:1rem;color:var(--text);font-style:italic;margin-bottom:1.25rem;line-height:1.6;padding:1rem 1.25rem;background:rgba(0,212,255,.04);border-left:3px solid var(--accent);border-radius:8px}
   .prompt-content .community-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.75rem;font-weight:700}
   .community-responses{display:flex;flex-direction:column;gap:.75rem}
   .response{padding:.9rem 1.1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;font-size:.88rem;color:var(--text);line-height:1.6}
   .response .resp-author{font-size:.72rem;color:var(--accent);font-weight:700;margin-bottom:.3rem;display:block}
-  .response.you{background:rgba(79,195,247,.06);border-color:rgba(79,195,247,.2)}
+  .response.you{background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.2)}
   .reply-form{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.06)}
   .reply-form textarea{width:100%;padding:.75rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:var(--text);font-size:.88rem;font-family:inherit;min-height:70px;resize:vertical;line-height:1.5;margin-bottom:.75rem}
-  .reply-form textarea:focus{outline:none;border-color:var(--accent);background:rgba(79,195,247,.04)}
+  .reply-form textarea:focus{outline:none;border-color:var(--accent);background:rgba(0,212,255,.04)}
   .reply-row{display:flex;gap:.65rem;align-items:center;flex-wrap:wrap}
   .reply-form input[type="text"]{flex:1;min-width:140px;padding:.6rem .85rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:var(--text);font-size:.82rem;font-family:inherit}
   .reply-form input[type="text"]:focus{outline:none;border-color:var(--accent)}
   .reply-btn{padding:.6rem 1.2rem;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;cursor:pointer;font-size:.82rem;font-weight:700;font-family:inherit;transition:.25s;white-space:nowrap}
-  .reply-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(79,195,247,.25)}
+  .reply-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,212,255,.25)}
   .reply-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;margin-bottom:.4rem}
 
   /* ── Quiz Section ── */
-  .quiz-intro{background:linear-gradient(135deg,rgba(79,195,247,.08),rgba(124,58,237,.08));border:1px solid rgba(79,195,247,.15);border-radius:16px;padding:1.5rem 2rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .quiz-intro{background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(124,58,237,.08));border:1px solid rgba(0,212,255,.15);border-radius:16px;padding:1.5rem 2rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   .quiz-intro .quiz-info{flex:1;min-width:260px}
   .quiz-intro .quiz-info h3{font-size:1.2rem;color:var(--accent);margin-bottom:.35rem}
   .quiz-intro .quiz-info p{color:var(--muted);font-size:.9rem}
@@ -364,14 +333,14 @@
 
   .quiz-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
   .quiz-item{background:var(--card);border-radius:14px;padding:1.5rem 1.75rem;border:1px solid rgba(255,255,255,.06);transition:.3s}
-  .quiz-item.answered{border-color:rgba(79,195,247,.2)}
+  .quiz-item.answered{border-color:rgba(0,212,255,.2)}
   .quiz-item .q-header{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
   .quiz-item .q-num{min-width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem}
   .quiz-item .q-text{font-size:1rem;font-weight:600;color:var(--text);line-height:1.5;flex:1}
   .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
   @media(max-width:600px){.quiz-options{grid-template-columns:1fr}}
   .quiz-opt{padding:.85rem 1.1rem;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);color:var(--text);font-size:.88rem;cursor:pointer;text-align:left;transition:.25s;font-family:inherit;line-height:1.4}
-  .quiz-opt:hover:not(:disabled){border-color:var(--accent);background:rgba(79,195,247,.05);transform:translateX(3px)}
+  .quiz-opt:hover:not(:disabled){border-color:var(--accent);background:rgba(0,212,255,.05);transform:translateX(3px)}
   .quiz-opt:disabled{cursor:default}
   .quiz-opt.correct{background:rgba(16,185,129,.12);border-color:var(--green);color:var(--green);font-weight:600}
   .quiz-opt.wrong{background:rgba(239,68,68,.1);border-color:var(--red);color:var(--red)}
@@ -387,7 +356,7 @@
   .quiz-reset button{padding:.65rem 1.5rem;border-radius:999px;background:transparent;color:var(--accent);border:1px solid var(--accent);cursor:pointer;font-size:.85rem;font-weight:600;transition:.25s;font-family:inherit}
   .quiz-reset button:hover{background:var(--accent);color:#000}
 
-  .quiz-final{display:none;margin-top:2rem;padding:2rem;border-radius:16px;background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(79,195,247,.08));border:1px solid rgba(16,185,129,.2);text-align:center;animation:fadeUp .5s ease}
+  .quiz-final{display:none;margin-top:2rem;padding:2rem;border-radius:16px;background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(0,212,255,.08));border:1px solid rgba(16,185,129,.2);text-align:center;animation:fadeUp .5s ease}
   .quiz-final.show{display:block}
   .quiz-final h3{font-size:1.4rem;color:var(--green);margin-bottom:.5rem}
   .quiz-final p{color:var(--muted);font-size:.95rem}
@@ -398,8 +367,8 @@
   .flip-inner{position:relative;width:100%;height:100%;min-height:220px;transition:transform .7s cubic-bezier(0.4,0,0.2,1);transform-style:preserve-3d}
   .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
   .flip-front,.flip-back{position:absolute;inset:0;border-radius:14px;padding:1.75rem;display:flex;flex-direction:column;justify-content:space-between;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(255,255,255,.06)}
-  .flip-front{background:linear-gradient(145deg,var(--card),rgba(30,63,122,.6))}
-  .flip-back{background:linear-gradient(145deg,rgba(16,185,129,.08),rgba(79,195,247,.08));border-color:rgba(16,185,129,.25);transform:rotateY(180deg)}
+  .flip-front{background:linear-gradient(145deg,var(--card),rgba(26,34,54,.6))}
+  .flip-back{background:linear-gradient(145deg,rgba(16,185,129,.08),rgba(0,212,255,.08));border-color:rgba(16,185,129,.25);transform:rotateY(180deg)}
   .flip-card:hover .flip-front{border-color:rgba(239,68,68,.3)}
   .myth-label{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;background:rgba(239,68,68,.12);color:var(--red);align-self:flex-start;margin-bottom:.75rem}
   .fact-label{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;background:rgba(16,185,129,.12);color:var(--green);align-self:flex-start;margin-bottom:.75rem}
@@ -412,7 +381,7 @@
   .feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
   @media(max-width:768px){.feedback-grid{grid-template-columns:1fr}}
   .fb-panel{background:var(--card);border-radius:16px;padding:2rem;border:1px solid rgba(255,255,255,.06);transition:.3s}
-  .fb-panel:hover{border-color:rgba(79,195,247,.15)}
+  .fb-panel:hover{border-color:rgba(0,212,255,.15)}
   .fb-panel h3{font-size:1.15rem;margin-bottom:.35rem;color:var(--accent)}
   .fb-panel .fb-sub{color:var(--muted);font-size:.85rem;margin-bottom:1.25rem}
   .fb-panel .fb-icon{font-size:1.8rem;margin-bottom:.5rem;display:block}
@@ -437,10 +406,10 @@
   .fb-form{display:flex;flex-direction:column;gap:1rem}
   .fb-form label{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;margin-bottom:.3rem;display:block}
   .fb-form select,.fb-form textarea,.fb-form input{width:100%;padding:.75rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:var(--text);font-size:.9rem;font-family:inherit;transition:.2s}
-  .fb-form select:focus,.fb-form textarea:focus,.fb-form input:focus{outline:none;border-color:var(--accent);background:rgba(79,195,247,.04)}
+  .fb-form select:focus,.fb-form textarea:focus,.fb-form input:focus{outline:none;border-color:var(--accent);background:rgba(0,212,255,.04)}
   .fb-form textarea{min-height:110px;resize:vertical;line-height:1.5}
   .fb-submit{padding:.8rem 1.5rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:700;transition:.25s;font-family:inherit;letter-spacing:.03em}
-  .fb-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(79,195,247,.25)}
+  .fb-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,212,255,.25)}
   .fb-submit:active{transform:translateY(0)}
   .fb-thanks{display:none;text-align:center;padding:1.25rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:10px;color:var(--green);font-size:.9rem;font-weight:600;animation:fadeUp .4s ease}
   .fb-thanks.show{display:block}
@@ -450,136 +419,8 @@
   .fade-in.visible{opacity:1;transform:translateY(0)}
 
   /* ── Tooltip on cone ── */
-  .cone-tooltip{position:absolute;background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.5rem .75rem;font-size:.78rem;color:var(--text);pointer-events:none;opacity:0;transition:.2s;z-index:10;max-width:220px;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+  .cone-tooltip{position:absolute;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.5rem .75rem;font-size:.78rem;color:var(--text);pointer-events:none;opacity:0;transition:.2s;z-index:10;max-width:220px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
   .cone-tooltip.show{opacity:1}
-
-  /* ═══ Section Colour Theming ═══ */
-  /* Each section gets a subtle top glow + accent-coloured title */
-  section{position:relative}
-  section::before{content:'';position:absolute;top:-2px;left:5%;right:5%;height:1px;border-radius:50%;pointer-events:none}
-
-  /* Stories — warm lavender */
-  #stories{border-top:1px solid rgba(224,164,255,.12)}
-  #stories::before{background:rgba(224,164,255,.3);box-shadow:0 0 40px 15px rgba(224,164,255,.08)}
-  #stories>.section-title{color:var(--sec-story)}
-
-  /* Key Concepts — sky blue */
-  #learning{border-top:1px solid rgba(79,195,247,.12)}
-  #learning::before{background:rgba(79,195,247,.3);box-shadow:0 0 40px 15px rgba(79,195,247,.08)}
-  #learning>.section-title{color:var(--sec-concept)}
-  #learning .learn-card{border-color:rgba(79,195,247,.08)}
-  #learning .learn-card:hover{border-color:rgba(79,195,247,.3)}
-
-  /* Past Cases — soft blue */
-  #past{border-top:1px solid rgba(96,165,250,.12)}
-  #past::before{background:rgba(96,165,250,.3);box-shadow:0 0 40px 15px rgba(96,165,250,.08)}
-  #past>.section-title{color:var(--sec-history)}
-  #past .past-card:hover{border-color:rgba(96,165,250,.4)}
-
-  /* Futures Cone — purple */
-  #cone{border-top:1px solid rgba(167,139,250,.12)}
-  #cone::before{background:rgba(167,139,250,.3);box-shadow:0 0 40px 15px rgba(167,139,250,.08)}
-  #cone>.section-title{color:var(--sec-cone)}
-
-  /* Timeline — blend purple→blue */
-  #timeline{border-top:1px solid rgba(167,139,250,.1)}
-  #timeline::before{background:rgba(167,139,250,.25);box-shadow:0 0 40px 15px rgba(167,139,250,.06)}
-  #timeline>.section-title{color:var(--sec-cone)}
-
-  /* Case Studies — gold */
-  #cases{border-top:1px solid rgba(245,183,49,.12)}
-  #cases::before{background:rgba(245,183,49,.3);box-shadow:0 0 40px 15px rgba(245,183,49,.08)}
-  #cases>.section-title{color:var(--sec-case)}
-  #cases .case-card:hover{border-color:rgba(245,183,49,.35)}
-  #cases .case-card .tag{background:rgba(245,183,49,.1);color:var(--sec-case)}
-
-  /* Risk / Benefit — warm orange */
-  #matrix{border-top:1px solid rgba(251,146,60,.12)}
-  #matrix::before{background:rgba(251,146,60,.3);box-shadow:0 0 40px 15px rgba(251,146,60,.08)}
-  #matrix>.section-title{color:var(--sec-risk)}
-
-  /* Guardrails — emerald green */
-  #guardrails{border-top:1px solid rgba(52,211,153,.12)}
-  #guardrails::before{background:rgba(52,211,153,.3);box-shadow:0 0 40px 15px rgba(52,211,153,.08)}
-  #guardrails>.section-title{color:var(--sec-guard)}
-  #guardrails .guard-card{border-left-color:var(--sec-guard)}
-
-  /* Quiz — pink */
-  #quiz{border-top:1px solid rgba(244,114,182,.12)}
-  #quiz::before{background:rgba(244,114,182,.3);box-shadow:0 0 40px 15px rgba(244,114,182,.08)}
-  #quiz>.section-title{color:var(--sec-quiz)}
-  #quiz .quiz-intro{background:linear-gradient(135deg,rgba(244,114,182,.08),rgba(167,139,250,.08));border-color:rgba(244,114,182,.15)}
-  #quiz .quiz-item .q-num{background:linear-gradient(135deg,var(--sec-quiz),var(--sec-cone))}
-
-  /* Myths — purple */
-  #myths{border-top:1px solid rgba(192,132,252,.12)}
-  #myths::before{background:rgba(192,132,252,.3);box-shadow:0 0 40px 15px rgba(192,132,252,.08)}
-  #myths>.section-title{color:var(--sec-myth)}
-
-  /* Reflections — sky blue */
-  #reflections{border-top:1px solid rgba(79,195,247,.12)}
-  #reflections::before{background:rgba(79,195,247,.3);box-shadow:0 0 40px 15px rgba(79,195,247,.08)}
-  #reflections>.section-title{color:var(--sec-reflect)}
-
-  /* Your Voice / Sticky Wall — warm gold */
-  #wall{border-top:1px solid rgba(251,191,36,.12)}
-  #wall::before{background:rgba(251,191,36,.3);box-shadow:0 0 40px 15px rgba(251,191,36,.08)}
-  #wall>.section-title{color:var(--sec-voice)}
-
-  /* Feedback — green */
-  #feedback{border-top:1px solid rgba(52,211,153,.12)}
-  #feedback::before{background:rgba(52,211,153,.3);box-shadow:0 0 40px 15px rgba(52,211,153,.08)}
-  #feedback>.section-title{color:var(--sec-feedback)}
-
-  /* ═══ Refined card glass effect ═══ */
-  .past-card,.case-card,.learn-card,.guard-card,.quiz-item,.qa-item,.fb-panel,.perspective-poll,.note-form,.prompt-content{
-    background:linear-gradient(145deg,rgba(30,63,122,.8),rgba(22,45,90,.65));
-    backdrop-filter:blur(8px);
-    border-color:rgba(255,255,255,.09);
-  }
-
-  /* ═══ Section subtitle colour match ═══ */
-  #stories>.section-sub{color:var(--sec-story);opacity:.7}
-  #learning>.section-sub{color:var(--sec-concept);opacity:.7}
-  #past>.section-sub{color:var(--sec-history);opacity:.7}
-  #cone>.section-sub{color:var(--sec-cone);opacity:.7}
-  #cases>.section-sub{color:var(--sec-case);opacity:.7}
-  #matrix>.section-sub{color:var(--sec-risk);opacity:.7}
-  #guardrails>.section-sub{color:var(--sec-guard);opacity:.7}
-  #quiz>.section-sub{color:var(--sec-quiz);opacity:.7}
-  #myths>.section-sub{color:var(--sec-myth);opacity:.7}
-  #reflections>.section-sub{color:var(--sec-reflect);opacity:.7}
-  #wall>.section-sub{color:var(--sec-voice);opacity:.7}
-  #feedback>.section-sub{color:var(--sec-feedback);opacity:.7}
-
-  /* ═══ Story card portrait gradients — richer ═══ */
-  .story-card:nth-child(1) .story-portrait{background:linear-gradient(145deg,#7c3aed,#4fc3f7)}
-  .story-card:nth-child(2) .story-portrait{background:linear-gradient(145deg,#059669,#0ea5e9)}
-  .story-card:nth-child(3) .story-portrait{background:linear-gradient(145deg,#ea580c,#f5b731)}
-
-  /* ═══ Nav link hover matches current section ═══ */
-  nav a:hover{color:#e8ecf4}
-
-  /* ═══ Guardrail cards alternating accent borders ═══ */
-  .guard-card:nth-child(1){border-left-color:#34d399}
-  .guard-card:nth-child(2){border-left-color:#4fc3f7}
-  .guard-card:nth-child(3){border-left-color:#a78bfa}
-  .guard-card:nth-child(4){border-left-color:#f5b731}
-  .guard-card:nth-child(5){border-left-color:#f87171}
-  .guard-card:nth-child(6){border-left-color:#fb923c}
-
-  /* ═══ Timeline dots colour rhythm ═══ */
-  .tl-item:nth-child(6n+1)::before{background:#4fc3f7}
-  .tl-item:nth-child(6n+2)::before{background:#a78bfa}
-  .tl-item:nth-child(6n+3)::before{background:#34d399}
-  .tl-item:nth-child(6n+4)::before{background:#f5b731}
-  .tl-item:nth-child(6n+5)::before{background:#f87171}
-  .tl-item:nth-child(6n+6)::before{background:#fb923c}
-  .timeline::before{background:linear-gradient(to bottom,#4fc3f7,#a78bfa,#34d399,#f5b731,#f87171,#fb923c,#4fc3f7)}
-
-  /* ═══ Flip card fronts — subtle colour coding ═══ */
-  .flip-front{background:linear-gradient(145deg,rgba(30,63,122,.9),rgba(248,113,113,.06))}
-  .flip-back{background:linear-gradient(145deg,rgba(30,63,122,.9),rgba(52,211,153,.1));border-color:rgba(52,211,153,.25)}
 </style>
 </head>
 <body>
@@ -607,7 +448,6 @@
   <a href="#guardrails">Guardrails</a>
   <a href="#quiz">Quiz</a>
   <a href="#myths">Myth vs Fact</a>
-  <a href="#reflections">Reflections</a>
   <a href="#wall">Your Voice</a>
   <a href="#feedback">Feedback</a>
 </nav>
@@ -1272,199 +1112,6 @@
   <div class="myth-grid fade-in" id="mythGrid"></div>
 </section>
 
-<!-- ═══════ PROJECT REFLECTIONS (Q&A) ═══════ -->
-<section id="reflections">
-  <h2 class="section-title fade-in">Project Reflections</h2>
-  <p class="section-sub fade-in">Behind the scenes: process, testing, insights, and future directions for this interactive exploration. Click any question to expand.</p>
-
-  <div class="qa-container fade-in">
-
-    <!-- Q1: Process -->
-    <div class="qa-item" onclick="this.classList.toggle('open')">
-      <div class="qa-question">
-        <div class="q-number">1</div>
-        <h3>What was your process for creating your final output?</h3>
-        <span class="q-arrow">&#9660;</span>
-      </div>
-      <div class="qa-answer"><div class="qa-answer-inner">
-        <p>The process was iterative and audience-centred, built around one guiding question: how do you make a complex policy debate feel personal to someone who has never thought about nuclear regulation?</p>
-        <div class="highlight-box process">
-          <strong>Phase 1 &mdash; Research &amp; Source-Building:</strong> I started with primary sources: NRC publications (including the NUREG-2261 AI Strategic Plan), DOE demonstration reports on AI licensing acceleration, IAEA proceedings on AI in nuclear applications, and the NIST AI Risk Management Framework. Twelve historical case studies &mdash; from Three Mile Island (1979) through the DOE&rsquo;s AI licensing demo (2025) &mdash; were selected specifically because each one teaches a different lesson about what goes right or wrong when automation meets safety-critical systems. Every case study card now links directly to its original source so readers can verify claims themselves.
-        </div>
-        <div class="highlight-box process">
-          <strong>Phase 2 &mdash; Human-Centred Framing:</strong> Research alone felt abstract, so I created three composite personas &mdash; Maya (a mother living near a reactor), Robert (a retired nuclear engineer), and Sofia (a young climate activist) &mdash; drawn from real public hearing testimony and community surveys. Their stories open the site because policy debates stick when you can picture the people affected. A perspective poll then lets every visitor declare where they stand; the leading vote reshapes the site&rsquo;s colour palette, so the website itself becomes a living reflection of the community&rsquo;s mood.
-        </div>
-        <div class="highlight-box process">
-          <strong>Phase 3 &mdash; Framework &amp; Visualisation:</strong> The futures cone methodology was selected because it acknowledges uncertainty honestly. Each scenario spans five STEEP dimensions and four likelihood levels (Possible, Plausible, Probable, Preferable) across time horizons from 2030 to 2060 &mdash; creating 80 unique scenario spaces. The interactive HTML5 Canvas cone lets users filter by dimension, year, and likelihood, so they can construct their own exploration path rather than following a fixed narrative.
-        </div>
-        <div class="highlight-box process">
-          <strong>Phase 4 &mdash; Engagement Layer:</strong> The final iteration added features designed to keep audiences thinking after the reading ends: a sticky note wall where anyone can post a reaction, discussion prompts with community reply threads, a six-question quiz with instant feedback, and myth-busting flip cards. These aren&rsquo;t decorations &mdash; they&rsquo;re grounded in the idea that learning sticks when you actively participate rather than passively consume.
-        </div>
-      </div></div>
-    </div>
-
-    <!-- Q2: Testing -->
-    <div class="qa-item" onclick="this.classList.toggle('open')">
-      <div class="qa-question">
-        <div class="q-number">2</div>
-        <h3>How did you test your idea or prototype with intended audiences or users?</h3>
-        <span class="q-arrow">&#9660;</span>
-      </div>
-      <div class="qa-answer"><div class="qa-answer-inner">
-        <p>Because the target audience is the general population &mdash; not nuclear engineers or AI specialists &mdash; every design decision was tested against one standard: does a non-expert understand what this means and why it matters?</p>
-        <div class="highlight-box insight">
-          <strong>Persona-Driven Design Testing:</strong> The three opening personas (Maya, Robert, Sofia) were drafted and shared with peers who had no background in nuclear policy. The test was simple: after reading only the personas, could they articulate what the debate is about? Early feedback showed that Robert&rsquo;s frustration about 14-year licensing timelines was the most effective entry point &mdash; it made the abstract cost of slow regulation feel real. Maya&rsquo;s story about living near a reactor tested well for emotional engagement, while Sofia&rsquo;s climate-vs-safety tension proved most effective at getting readers to see both sides.
-        </div>
-        <div class="highlight-box insight">
-          <strong>Interactive Element Iteration:</strong> The futures cone initially confused testers who didn&rsquo;t know what STEEP stood for. This led to placing the Key Concepts section before the cone, so readers learn the vocabulary first. The perspective poll was tested for whether people actually voted &mdash; adding the real-time colour-shift feedback increased participation significantly because voters could see their choice immediately reflected in the site&rsquo;s appearance. The sticky note wall was originally at the bottom of the page; testers suggested placing it in a dedicated &ldquo;Your Voice&rdquo; section to signal that audience input is a first-class feature, not an afterthought.
-        </div>
-        <div class="highlight-box insight">
-          <strong>Source Verification:</strong> Every factual claim &mdash; from the 48% human error rate (INPO studies) to the $30B+ Vogtle cost overrun to the DOE&rsquo;s one-day-vs-six-weeks AI document review demonstration &mdash; was traced back to its primary source. Each case study and guardrail card now includes a direct link to the original NRC, DOE, IAEA, NIST, or NTSB source so readers can verify for themselves.
-        </div>
-        <div class="highlight-box insight">
-          <strong>Readability &amp; Accessibility:</strong> The site was tested across screen sizes for responsive design. The dark theme uses high-contrast text and consistent colour coding for opportunity (green), risk (red), and mixed (orange) tags. All interactive elements &mdash; flip cards, expandable panels, the poll, the sticky note form &mdash; were sized for touch screens. The discussion prompts were tested for whether seed responses felt balanced or one-sided; each question deliberately includes voices from at least two opposing positions.
-        </div>
-      </div></div>
-    </div>
-
-    <!-- Q3: Understanding of Wicked Problem -->
-    <div class="qa-item" onclick="this.classList.toggle('open')">
-      <div class="qa-question">
-        <div class="q-number">3</div>
-        <h3>How did working on this project alter or shape your understanding of the wicked problem you selected?</h3>
-        <span class="q-arrow">&#9660;</span>
-      </div>
-      <div class="qa-answer"><div class="qa-answer-inner">
-        <p>I started this project expecting to land on an answer. I finished it understanding why the question resists one.</p>
-        <div class="highlight-box insight">
-          <strong>The &ldquo;Both/And&rdquo; Realisation:</strong> Writing Maya, Robert, and Sofia&rsquo;s stories forced me to inhabit three genuinely different positions at the same time. Maya&rsquo;s fear is rational. Robert&rsquo;s frustration is justified. Sofia&rsquo;s urgency is backed by data. And none of them is wrong. That experience &mdash; more than any research paper &mdash; made the &ldquo;wicked&rdquo; label click for me. The Boeing 737 MAX case sealed it: an automation built to improve safety killed 346 people. That isn&rsquo;t a flaw better engineering can fix; it&rsquo;s a tension baked into every human-AI system.
-        </div>
-        <div class="highlight-box insight">
-          <strong>Time Changes Everything:</strong> Building the futures cone made me think seriously about how the same technology creates radically different problems at different horizons. AI-assisted document review with a human checking every output looks manageable in 2030. By 2060, we could face AI systems so complex that only other AI can audit them &mdash; and the humans nominally &ldquo;in the loop&rdquo; are really just signing off on outputs they can no longer evaluate. The wicked problem isn&rsquo;t static; it evolves as technology, society, and governance co-evolve.
-        </div>
-        <div class="highlight-box insight">
-          <strong>Patterns Repeat Across Industries:</strong> Studying twelve cases from aviation, autonomous vehicles, healthcare, and nuclear revealed the same failure modes recurring: automation complacency (Uber), single-point-of-failure design (Boeing MCAS), narrow training data applied to broad contexts (IBM Watson), and regulators who delegated oversight to the companies they were supposed to regulate (FAA with Boeing). Nuclear isn&rsquo;t unique in facing these patterns &mdash; but the consequences of repeating them are uniquely catastrophic and long-lasting.
-        </div>
-        <div class="highlight-box insight">
-          <strong>Governance Is the Hardest Part:</strong> The technology challenges are significant but solvable. The truly wicked dimension is governance. How do you regulate AI that evolves faster than regulatory frameworks? How do you maintain NRC independence when the agency itself uses AI tools it&rsquo;s supposed to oversee? The discussion prompts on this site deliberately pose these questions because I don&rsquo;t think anyone &mdash; including me &mdash; has settled answers yet. That&rsquo;s exactly why public participation matters.
-        </div>
-      </div></div>
-    </div>
-
-    <!-- Q4: Takeaway for Users -->
-    <div class="qa-item" onclick="this.classList.toggle('open')">
-      <div class="qa-question">
-        <div class="q-number">4</div>
-        <h3>What do you hope people who interact with the project will take away from that interaction?</h3>
-        <span class="q-arrow">&#9660;</span>
-      </div>
-      <div class="qa-answer"><div class="qa-answer-inner">
-        <p>The most important takeaway is that <strong>this debate belongs to everyone, not just nuclear engineers and AI researchers</strong>. The site is designed so that anyone who finishes it can hold their own in a conversation about AI and nuclear safety.</p>
-        <div class="highlight-box future">
-          <strong>Comfort with Complexity:</strong> The futures cone deliberately presents multiple possible outcomes because that&rsquo;s the honest reality. I hope users leave more comfortable sitting with uncertainty rather than demanding simple answers. Anyone who tells you AI in nuclear safety is &ldquo;definitely good&rdquo; or &ldquo;definitely dangerous&rdquo; hasn&rsquo;t done the reading. The perspective poll is designed to make this visible &mdash; people land on every part of the spectrum, and no position is dismissed.
-        </div>
-        <div class="highlight-box future">
-          <strong>Pattern Recognition:</strong> The twelve &ldquo;Past to Today&rdquo; case studies aren&rsquo;t history lessons &mdash; they&rsquo;re training your eye to spot recurring failure modes. Information overload at Three Mile Island. Safety override at Chernobyl. Hidden automation at Boeing. Narrow training data at IBM Watson. These same patterns are directly relevant to how AI is being deployed in nuclear systems right now. Once you see them, you can&rsquo;t unsee them.
-        </div>
-        <div class="highlight-box future">
-          <strong>A Voice in the Room:</strong> The sticky note wall, the discussion prompts, and the reply threads aren&rsquo;t just engagement features. They embody the project&rsquo;s core argument: that public participation in AI governance isn&rsquo;t optional. Maya&rsquo;s question &mdash; &ldquo;Who do I call when an algorithm makes the wrong call?&rdquo; &mdash; only gets answered if people like Maya are in the room when the rules are written.
-        </div>
-        <div class="highlight-box future">
-          <strong>Guardrails Before Deployment:</strong> If nothing else, I want users to understand that AI in nuclear safety is not an inevitability to passively accept. It&rsquo;s a choice we&rsquo;re making right now, and the six guardrails &mdash; human authority, transparency, independent testing, cybersecurity, regulatory independence, and continuous audit &mdash; represent the minimum conditions under which that choice can be made responsibly.
-        </div>
-      </div></div>
-    </div>
-
-    <!-- Q5: Medium Limitations/Advantages -->
-    <div class="qa-item" onclick="this.classList.toggle('open')">
-      <div class="qa-question">
-        <div class="q-number">5</div>
-        <h3>How did working on this project shape your understanding of the limitations or advantages of the medium you selected?</h3>
-        <span class="q-arrow">&#9660;</span>
-      </div>
-      <div class="qa-answer"><div class="qa-answer-inner">
-        <p>An interactive website turned out to be both the best and the hardest medium for this topic &mdash; and the reasons are inseparable.</p>
-        <div class="highlight-box process">
-          <strong>Advantage &mdash; Readers Choose Their Own Path:</strong> Unlike a paper or presentation, the website lets users explore in whatever order interests them. A climate-focused reader might start with Sofia&rsquo;s story and jump straight to the timeline. A policy wonk might go to the futures cone first. This non-linear structure mirrors the wicked problem itself: there is no single &ldquo;correct&rdquo; entry point. The expandable case studies keep the surface clean while preserving depth for those who want it.
-        </div>
-        <div class="highlight-box process">
-          <strong>Advantage &mdash; Participation Changes Understanding:</strong> The most powerful discovery was that features which invite action &mdash; the perspective poll, the sticky note wall, the discussion reply threads &mdash; shift readers from consumers to participants. When you vote and watch the site&rsquo;s colours change, the abstract idea that &ldquo;public opinion shapes policy&rdquo; becomes something you can see happening. When you post a note and see it on the wall alongside others, the community dimension of the debate becomes tangible. A PDF can&rsquo;t do that.
-        </div>
-        <div class="highlight-box challenge">
-          <strong>Limitation &mdash; Depth vs. Engagement:</strong> The medium rewards concise, scannable content. Complex policy analysis that takes pages in an academic paper has to fit in a few sentences on a scenario card. There is always a risk that simplification becomes oversimplification. The expandable sections and source links help &mdash; readers can dig deeper or verify claims &mdash; but the website can never fully replace a 40-page research report for a specialist audience.
-        </div>
-        <div class="highlight-box challenge">
-          <strong>Limitation &mdash; Local-Only Persistence:</strong> The sticky notes, poll votes, and discussion replies are stored in the browser&rsquo;s localStorage, which means they persist on one device but aren&rsquo;t shared across visitors. This is a meaningful constraint: the &ldquo;community&rdquo; responses are simulated seed data, not real crowdsourced input. A production version would need a backend database to make the collective participation genuine. The upside is that the site works entirely offline, with no accounts or servers required.
-        </div>
-      </div></div>
-    </div>
-
-    <!-- Q6: Future Development -->
-    <div class="qa-item" onclick="this.classList.toggle('open')">
-      <div class="qa-question">
-        <div class="q-number">6</div>
-        <h3>How might you develop this project further given (unlimited) time and resources?</h3>
-        <span class="q-arrow">&#9660;</span>
-      </div>
-      <div class="qa-answer"><div class="qa-answer-inner">
-        <p>The current site works as a standalone educational tool, but with more time and resources it could become something closer to a living, shared platform.</p>
-        <div class="highlight-box future">
-          <strong>Real Community Data:</strong> The biggest leap would be replacing localStorage with a real backend so sticky notes, poll votes, and discussion replies are shared across all visitors. Right now, the &ldquo;community&rdquo; is simulated with seed data. A genuine shared wall &mdash; moderated for quality &mdash; would transform the site from an educational project into an actual public forum. The perspective poll would show real aggregate sentiment from hundreds of visitors, not just one device.
-        </div>
-        <div class="highlight-box future">
-          <strong>Live Data &amp; Evolving Scenarios:</strong> Connect the futures cone to real-time feeds from the NRC, IAEA, and DOE. As new AI licensing milestones happen, the cone could update dynamically &mdash; moving scenarios between &ldquo;possible&rdquo; and &ldquo;probable&rdquo; as evidence accumulates. The timeline section could pull current news automatically, turning the site into a living dashboard rather than a static snapshot.
-        </div>
-        <div class="highlight-box future">
-          <strong>Policy Simulation:</strong> Build a sandbox where users can adjust parameters &mdash; AI autonomy level, regulatory stringency, funding allocation, public engagement requirements &mdash; and watch how their choices affect projected safety outcomes, licensing timelines, and cost. This would move the project from &ldquo;here&rsquo;s what might happen&rdquo; to &ldquo;here&rsquo;s what happens when <em>you</em> make the decisions.&rdquo;
-        </div>
-        <div class="highlight-box future">
-          <strong>Expert Video Interviews:</strong> Replace the composite personas with recorded interviews from real nuclear engineers, NRC inspectors, community activists, and AI researchers. Hearing a retired reactor operator describe what 3 a.m. alarm fatigue actually feels like would carry weight that written text cannot match.
-        </div>
-        <div class="highlight-box future">
-          <strong>Classroom Integration &amp; Accessibility:</strong> Package the site as a curriculum module for university courses in energy policy, AI ethics, or public policy &mdash; with a teacher&rsquo;s guide, structured lesson plans, and graded quiz exports. Rebuild the Canvas visualisation in accessible SVG with ARIA labels and full keyboard navigation. Translate into major languages, given that nuclear safety governance is fundamentally a global issue.
-        </div>
-      </div></div>
-    </div>
-
-    <!-- Q7: Class Input -->
-    <div class="qa-item" onclick="this.classList.toggle('open')">
-      <div class="qa-question">
-        <div class="q-number">7</div>
-        <h3>Is there any final input you would like from the class as you wrap up your project?</h3>
-        <span class="q-arrow">&#9660;</span>
-      </div>
-      <div class="qa-answer"><div class="qa-answer-inner">
-        <p>Yes &mdash; the site was built to start conversations, so class feedback would sharpen every layer of it. Here are four areas where input would matter most.</p>
-        <div class="highlight-box insight">
-          <strong>Persona Authenticity:</strong> Maya, Robert, and Sofia each represent a different stake in the AI-meets-nuclear debate &mdash; a worried parent, a frustrated engineer, and a climate-minded student. Do those three voices feel real and balanced, or does any one perspective dominate? Are there stakeholder viewpoints missing &mdash; such as Indigenous communities near reactor sites, plant workers facing automation, or Global South nations seeking energy access?
-        </div>
-        <div class="highlight-box insight">
-          <strong>Engagement Features:</strong> The site asks readers to vote in a perspective poll, post sticky notes, and reply to discussion prompts. Did those elements feel inviting or overwhelming? Did the four poll stances (optimistic, cautious, uncertain, skeptical) capture a real spread of opinion, or should a fifth option exist? Were the discussion questions thought-provoking enough to make you want to type a reply?
-        </div>
-        <div class="highlight-box insight">
-          <strong>Clarity for Non-Experts:</strong> Sections like the Futures Cone, STEEP analysis, and the six recommended guardrails introduce frameworks that may be new to many readers. Did the Key Concepts section, placed early in the page, prepare you well enough &mdash; or did any term still feel like jargon when you encountered it in the case studies or risk/benefit analysis?
-        </div>
-        <div class="highlight-box insight">
-          <strong>Source Trust &amp; Navigation:</strong> Every case study, historical card, and guardrail card links to an external reference (NRC, IAEA, NIST, DOE, and others). Did those links add credibility, or did they interrupt your reading flow? And across fourteen sections &mdash; from the quiz to the myth-busting flip cards to the sticky-note wall &mdash; was the navigation intuitive, or did the page feel too long to explore in one sitting?
-        </div>
-      </div></div>
-    </div>
-
-  </div>
-
-  <!-- Key Takeaways Banner -->
-  <div class="takeaway-banner fade-in">
-    <h3>Core Takeaways from This Project</h3>
-    <div class="takeaway-items">
-      <div class="takeaway-chip">AI in nuclear is both opportunity AND risk</div>
-      <div class="takeaway-chip">Human oversight must stay on the final signature line</div>
-      <div class="takeaway-chip">Cross-industry failures (Boeing, Uber, Watson) carry real warnings</div>
-      <div class="takeaway-chip">The future is plural &mdash; the Futures Cone proves it</div>
-      <div class="takeaway-chip">Six guardrails must come before deployment</div>
-      <div class="takeaway-chip">Public voices belong in the room, not just experts</div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════ YOUR VOICE: STICKY NOTE WALL + DISCUSSION ═══════ -->
 <section id="wall">
@@ -1984,8 +1631,8 @@ function drawCone(){
   ctx.lineTo(endX, originY + maxSpread);
   ctx.closePath();
   const grad = ctx.createLinearGradient(originX,0,endX,0);
-  grad.addColorStop(0,'rgba(79,195,247,.03)');
-  grad.addColorStop(1,'rgba(79,195,247,.08)');
+  grad.addColorStop(0,'rgba(0,212,255,.03)');
+  grad.addColorStop(1,'rgba(0,212,255,.08)');
   ctx.fillStyle = grad;
   ctx.fill();
 
@@ -2030,9 +1677,9 @@ function drawCone(){
 
     ctx.beginPath();
     ctx.ellipse(x, originY, 18 * t + 4, spread, 0, 0, Math.PI*2);
-    ctx.fillStyle = isActive ? 'rgba(79,195,247,.12)' : 'rgba(255,255,255,.04)';
+    ctx.fillStyle = isActive ? 'rgba(0,212,255,.12)' : 'rgba(255,255,255,.04)';
     ctx.fill();
-    ctx.strokeStyle = isActive ? 'rgba(79,195,247,.5)' : 'rgba(255,255,255,.08)';
+    ctx.strokeStyle = isActive ? 'rgba(0,212,255,.5)' : 'rgba(255,255,255,.08)';
     ctx.lineWidth = isActive ? 2 : 1;
     ctx.stroke();
 
@@ -2199,7 +1846,7 @@ function showScenario(){
     <div class="tags">
       <span class="badge" style="background:${dimColor}22;color:${dimColor};border:1px solid ${dimColor}44">${dimLabel}</span>
       <span class="badge" style="background:${likeColor}22;color:${likeColor};border:1px solid ${likeColor}44">${likeLabel}</span>
-      <span class="badge" style="background:rgba(79,195,247,.1);color:#00d4ff;border:1px solid rgba(79,195,247,.2)">${activeYear}</span>
+      <span class="badge" style="background:rgba(0,212,255,.1);color:#00d4ff;border:1px solid rgba(0,212,255,.2)">${activeYear}</span>
     </div>
     <h3>${found.title}</h3>
     <div class="body">${found.body}</div>
@@ -2219,47 +1866,32 @@ function initParticles(){
   const pctx = pc.getContext('2d');
   pc.width = window.innerWidth;
   pc.height = window.innerHeight;
-  const particles = Array.from({length:80}, ()=>{
-    const brightness = Math.random();
-    return {
-      x: Math.random()*pc.width, y: Math.random()*pc.height,
-      vx: (Math.random()-.5)*.2, vy: (Math.random()-.5)*.2,
-      r: brightness > 0.9 ? Math.random()*2+1 : Math.random()*1.2+.3,
-      a: brightness > 0.9 ? .6 : Math.random()*.35+.1,
-      twinkle: brightness > 0.85,
-      phase: Math.random()*Math.PI*2
-    };
-  });
+  const particles = Array.from({length:60}, ()=>({
+    x: Math.random()*pc.width, y: Math.random()*pc.height,
+    vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
+    r: Math.random()*1.5+.5
+  }));
   function animate(){
     pctx.clearRect(0,0,pc.width,pc.height);
-    const t = Date.now()*0.001;
     particles.forEach(p=>{
       p.x += p.vx; p.y += p.vy;
       if(p.x<0||p.x>pc.width) p.vx *= -1;
       if(p.y<0||p.y>pc.height) p.vy *= -1;
-      let alpha = p.a;
-      if(p.twinkle) alpha *= .5 + .5*Math.sin(t*1.5 + p.phase);
       pctx.beginPath();
       pctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      pctx.fillStyle = `rgba(200,225,255,${alpha})`;
+      pctx.fillStyle = 'rgba(0,212,255,.25)';
       pctx.fill();
-      if(p.r > 1.5){
-        pctx.beginPath();
-        pctx.arc(p.x,p.y,p.r*2.5,0,Math.PI*2);
-        pctx.fillStyle = `rgba(79,195,247,${alpha*.15})`;
-        pctx.fill();
-      }
     });
-    // Faint constellation lines between close particles
+    // Lines between close particles
     for(let i=0;i<particles.length;i++){
       for(let j=i+1;j<particles.length;j++){
         const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
         const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<100){
+        if(dist<120){
           pctx.beginPath();
           pctx.moveTo(particles[i].x,particles[i].y);
           pctx.lineTo(particles[j].x,particles[j].y);
-          pctx.strokeStyle=`rgba(79,195,247,${.04*(1-dist/100)})`;
+          pctx.strokeStyle=`rgba(0,212,255,${.08*(1-dist/120)})`;
           pctx.stroke();
         }
       }
@@ -2792,7 +2424,7 @@ function showPrompt(idx){
     const allReplies = loadReplies();
     const userReplies = allReplies[idx] || [];
     html += userReplies.map((r,i)=>
-      `<div class="response you"><span class="resp-author">${escapeHtml(r.author)}</span>${escapeHtml(r.text)}<button style="float:right;background:none;border:none;color:rgba(79,195,247,.5);cursor:pointer;font-size:.85rem" onclick="deleteReply(${idx},${i})" title="Delete">&times;</button></div>`
+      `<div class="response you"><span class="resp-author">${escapeHtml(r.author)}</span>${escapeHtml(r.text)}<button style="float:right;background:none;border:none;color:rgba(0,212,255,.5);cursor:pointer;font-size:.85rem" onclick="deleteReply(${idx},${i})" title="Delete">&times;</button></div>`
     ).join('');
     rEl.innerHTML = html;
   }
