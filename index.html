@@ -1,9 +1,34 @@
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeCq7DiX6rgyT8TLKlwYufPOUXXnczdgM",
+    authDomain: "ai-nuclear-safety.firebaseapp.com",
+    projectId: "ai-nuclear-safety",
+    storageBucket: "ai-nuclear-safety.firebasestorage.app",
+    messagingSenderId: "901223931078",
+    appId: "1:901223931078:web:25182f00fd27c6b162cbc7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI in Nuclear Safety &amp; Licensing: Opportunity or Risk?</title>
+<!-- Firebase SDK (compat mode for simplicity) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <style>
   /* ── Reset & Base ── */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -2010,7 +2035,17 @@ const quizData = [
   }
 ];
 
-let quizAnswers = new Array(quizData.length).fill(null);
+const QUIZ_KEY = 'nuclearAI_quiz_v1';
+
+function loadQuizAnswers(){
+  try{ return JSON.parse(localStorage.getItem(QUIZ_KEY)) || new Array(quizData.length).fill(null); }
+  catch(e){ return new Array(quizData.length).fill(null); }
+}
+function saveQuizAnswers(){
+  try{ localStorage.setItem(QUIZ_KEY, JSON.stringify(quizAnswers)); }catch(e){}
+}
+
+let quizAnswers = loadQuizAnswers();
 
 function renderQuiz(){
   const grid = document.getElementById('quizGrid');
@@ -2032,12 +2067,30 @@ function renderQuiz(){
       <div class="quiz-feedback"></div>
     `;
     grid.appendChild(div);
+
+    // Restore previously answered state
+    if(quizAnswers[idx] !== null){
+      const optIdx = quizAnswers[idx];
+      const buttons = div.querySelectorAll('.quiz-opt');
+      buttons.forEach((b, i) => {
+        b.disabled = true;
+        if(i === item.correct) b.classList.add('correct');
+        else if(i === optIdx) b.classList.add('wrong');
+      });
+      const fb = div.querySelector('.quiz-feedback');
+      const isCorrect = optIdx === item.correct;
+      fb.classList.add(isCorrect ? 'correct' : 'wrong');
+      fb.innerHTML = `<strong>${isCorrect ? '\u2713 Correct!' : '\u2717 Not quite.'}</strong> ${item.explain}`;
+      div.classList.add('answered');
+    }
   });
+  updateScore();
 }
 
 function answerQuiz(qIdx, optIdx){
   if(quizAnswers[qIdx] !== null) return;
   quizAnswers[qIdx] = optIdx;
+  saveQuizAnswers();
   const item = quizData[qIdx];
   const itemEl = document.getElementById('quiz-' + qIdx);
   const buttons = itemEl.querySelectorAll('.quiz-opt');
@@ -2078,6 +2131,7 @@ function updateScore(){
 
 function resetQuiz(){
   quizAnswers = new Array(quizData.length).fill(null);
+  saveQuizAnswers();
   document.getElementById('quizScore').textContent = '0';
   document.getElementById('quizFinal').classList.remove('show');
   renderQuiz();
@@ -2142,14 +2196,55 @@ function renderMyths(){
 // ── RATING POLL ──
 // ═══════════════════════════════════════════
 const ratingLabels = {1: "Not helpful", 2: "Slightly helpful", 3: "Moderately helpful", 4: "Very helpful", 5: "Extremely helpful"};
+const RATING_KEY = 'nuclearAI_rating_v1';
+const RATING_VOTE_KEY = 'nuclearAI_ratingVote_v1';
 // Simulated baseline community ratings
-let pollCounts = {1: 2, 2: 4, 3: 12, 4: 38, 5: 27};
+const DEFAULT_RATINGS = {1: 2, 2: 4, 3: 12, 4: 38, 5: 27};
+
+function loadRatingPoll(){
+  try{ return JSON.parse(localStorage.getItem(RATING_KEY)) || {...DEFAULT_RATINGS}; }
+  catch(e){ return {...DEFAULT_RATINGS}; }
+}
+function saveRatingPoll(p){
+  try{ localStorage.setItem(RATING_KEY, JSON.stringify(p)); }catch(e){}
+  const ref = fbRef('ratings');
+  if(ref) ref.set(p);
+}
+function getSavedRating(){
+  try{ return parseInt(localStorage.getItem(RATING_VOTE_KEY)) || 0; }catch(e){ return 0; }
+}
+function setSavedRating(r){
+  try{ localStorage.setItem(RATING_VOTE_KEY, String(r)); }catch(e){}
+}
+
+let pollCounts = loadRatingPoll();
+
+function initFirebaseRatings(){
+  if(!firebaseReady) return;
+  const ref = fbRef('ratings');
+  ref.once('value', snap => {
+    if(!snap.val()) ref.set({...DEFAULT_RATINGS});
+  });
+  fbListen('ratings', data => {
+    if(data){
+      pollCounts = data;
+      renderPollResults();
+    }
+  });
+}
 
 function initRating(){
   const stars = document.querySelectorAll('#ratingStars .star-btn');
   const label = document.getElementById('ratingLabel');
-  let currentRating = 0;
-  let locked = false;
+  let currentRating = getSavedRating();
+  let locked = currentRating > 0;
+
+  // Restore previous rating visually
+  if(currentRating > 0){
+    stars.forEach(s => s.classList.toggle('selected', parseInt(s.dataset.rating) <= currentRating));
+    label.textContent = "You rated this " + currentRating + " star" + (currentRating > 1 ? "s" : "") + ".";
+    label.classList.add('active');
+  }
 
   stars.forEach(star => {
     const r = parseInt(star.dataset.rating);
@@ -2175,7 +2270,18 @@ function initRating(){
       });
       label.textContent = "Thanks! You rated this " + r + " star" + (r > 1 ? "s" : "") + ".";
       label.classList.add('active');
-      pollCounts[r] = (pollCounts[r] || 0) + 1;
+      if(firebaseReady){
+        const rRef = fbRef('ratings');
+        rRef.transaction(current => {
+          if(!current) current = {...DEFAULT_RATINGS};
+          current[r] = (current[r] || 0) + 1;
+          return current;
+        });
+      } else {
+        pollCounts[r] = (pollCounts[r] || 0) + 1;
+        saveRatingPoll(pollCounts);
+      }
+      setSavedRating(r);
       renderPollResults();
     });
   });
@@ -2204,17 +2310,75 @@ function renderPollResults(){
 // ═══════════════════════════════════════════
 // ── FEEDBACK FORM ──
 // ═══════════════════════════════════════════
+const FEEDBACK_KEY = 'nuclearAI_feedback_v1';
+
+function loadFeedbackList(){
+  try{ return JSON.parse(localStorage.getItem(FEEDBACK_KEY)) || []; }
+  catch(e){ return []; }
+}
+function saveFeedbackList(list){
+  try{ localStorage.setItem(FEEDBACK_KEY, JSON.stringify(list)); }catch(e){}
+  const ref = fbRef('feedback');
+  if(ref) ref.set(list);
+}
+
 function submitFeedback(e){
   e.preventDefault();
   const type = document.getElementById('fbType').value;
   const msg = document.getElementById('fbMessage').value;
   const name = document.getElementById('fbName').value || 'Anonymous';
-  // Note: in a real deployment this would POST to a backend.
-  // For this demo, we log to console so the user can verify it was captured.
-  console.log('Feedback submitted:', {type, message: msg, name, timestamp: new Date().toISOString()});
+  const entry = {type, message: msg, name, timestamp: new Date().toISOString()};
+  const list = loadFeedbackList();
+  list.push(entry);
+  saveFeedbackList(list);
+  console.log('Feedback submitted:', entry);
   document.getElementById('fbForm').style.display = 'none';
   document.getElementById('fbThanks').classList.add('show');
   return false;
+}
+
+// Restore feedback form state if already submitted
+function restoreFeedbackState(){
+  const list = loadFeedbackList();
+  if(list.length > 0){
+    const form = document.getElementById('fbForm');
+    const thanks = document.getElementById('fbThanks');
+    if(form) form.style.display = 'none';
+    if(thanks) thanks.classList.add('show');
+  }
+}
+
+// ═══════════════════════════════════════════════
+// FIREBASE SETUP
+// ═══════════════════════════════════════════════
+// ▶▶▶ PASTE YOUR FIREBASE CONFIG HERE ◀◀◀
+const FIREBASE_CONFIG = {
+  databaseURL: "YOUR_DATABASE_URL_HERE"
+  // Example: databaseURL: "https://ai-nuclear-safety-xxxxx-default-rtdb.firebaseio.com"
+};
+
+let db = null;
+let firebaseReady = false;
+try {
+  if(FIREBASE_CONFIG.databaseURL && FIREBASE_CONFIG.databaseURL !== "YOUR_DATABASE_URL_HERE"){
+    firebase.initializeApp(FIREBASE_CONFIG);
+    db = firebase.database();
+    firebaseReady = true;
+    console.log('Firebase connected — feedback is shared across all visitors!');
+  } else {
+    console.log('Firebase not configured — using localStorage only. Replace YOUR_DATABASE_URL_HERE in the code to enable sharing.');
+  }
+} catch(e){
+  console.warn('Firebase init failed, falling back to localStorage:', e);
+}
+
+// Helper: Firebase ref shortcut
+function fbRef(path){ return firebaseReady ? db.ref(path) : null; }
+
+// Helper: listen for real-time changes on a Firebase path
+function fbListen(path, callback){
+  const ref = fbRef(path);
+  if(ref) ref.on('value', snap => callback(snap.val()));
 }
 
 // ═══════════════════════════════════════════════
@@ -2223,13 +2387,17 @@ function submitFeedback(e){
 const POLL_KEY = 'nuclearAI_poll_v1';
 const VOTED_KEY = 'nuclearAI_voted_v1';
 const DEFAULT_POLL = { optimistic: 42, cautious: 78, uncertain: 31, skeptical: 24 };
+let livePoll = null; // holds Firebase data when available
 
 function loadPoll(){
+  if(livePoll) return {...livePoll};
   try{ return JSON.parse(localStorage.getItem(POLL_KEY)) || {...DEFAULT_POLL}; }
   catch(e){ return {...DEFAULT_POLL}; }
 }
 function savePoll(p){
   try{ localStorage.setItem(POLL_KEY, JSON.stringify(p)); }catch(e){}
+  const ref = fbRef('poll');
+  if(ref) ref.set(p);
 }
 function getUserVote(){
   try{ return localStorage.getItem(VOTED_KEY); }catch(e){ return null; }
@@ -2238,13 +2406,44 @@ function setUserVote(s){
   try{ localStorage.setItem(VOTED_KEY, s); }catch(e){}
 }
 
+// Initialize poll in Firebase with defaults if empty
+function initFirebasePoll(){
+  if(!firebaseReady) return;
+  const ref = fbRef('poll');
+  ref.once('value', snap => {
+    if(!snap.val()){
+      ref.set({...DEFAULT_POLL});
+    }
+  });
+  // Listen for real-time changes from all visitors
+  fbListen('poll', data => {
+    if(data){
+      livePoll = data;
+      renderPoll();
+      applyTheme();
+    }
+  });
+}
+
 function vote(stance){
   const prev = getUserVote();
-  const poll = loadPoll();
   if(prev === stance) return;
-  if(prev && poll[prev] > 0) poll[prev]--;
-  poll[stance] = (poll[stance] || 0) + 1;
-  savePoll(poll);
+
+  if(firebaseReady){
+    // Use Firebase transactions for atomic updates
+    const ref = fbRef('poll');
+    ref.transaction(current => {
+      if(!current) current = {...DEFAULT_POLL};
+      if(prev && current[prev] > 0) current[prev]--;
+      current[stance] = (current[stance] || 0) + 1;
+      return current;
+    });
+  } else {
+    const poll = loadPoll();
+    if(prev && poll[prev] > 0) poll[prev]--;
+    poll[stance] = (poll[stance] || 0) + 1;
+    savePoll(poll);
+  }
   setUserVote(stance);
   renderPoll();
   applyTheme();
@@ -2281,21 +2480,38 @@ function applyTheme(){
 // ═══════════════════════════════════════════════
 const NOTES_KEY = 'nuclearAI_notes_v1';
 let selectedColor = 'yellow';
+let firebaseNotes = null; // holds shared notes from Firebase
 
 function loadNotes(){
+  // Firebase notes are shared; localStorage notes are local-only fallback
+  if(firebaseNotes) return [...firebaseNotes];
   try{ return JSON.parse(localStorage.getItem(NOTES_KEY)) || []; }
   catch(e){ return []; }
 }
 function saveNotes(notes){
   try{ localStorage.setItem(NOTES_KEY, JSON.stringify(notes)); }catch(e){}
+  const ref = fbRef('notes');
+  if(ref) ref.set(notes);
+}
+
+function initFirebaseNotes(){
+  if(!firebaseReady) return;
+  const ref = fbRef('notes');
+  ref.once('value', snap => {
+    if(!snap.val()) ref.set([]);
+  });
+  fbListen('notes', data => {
+    firebaseNotes = data ? (Array.isArray(data) ? data : Object.values(data)) : [];
+    renderNotes();
+  });
 }
 
 const SEED_NOTES = [
-  { text: "I came in skeptical but the Vogtle cost numbers really changed how I see this. 14 years is insane.", author: "— J.M.", color: "blue", rot: -2 },
-  { text: "As a parent I need human accountability. Full stop. AI can assist, not decide.", author: "— Mom of 3", color: "pink", rot: 1.5 },
-  { text: "The Boeing 737 MAX story shook me. An automation meant to improve safety killed 346 people. Now imagine that in a reactor.", author: "— Alex K.", color: "orange", rot: -1 },
-  { text: "More nuclear = less coal = cleaner air in my town. I'll take the AI if it gets us there faster.", author: "— Priya", color: "green", rot: 2 },
-  { text: "Who trains the AI? Who audits the trainers? That's what keeps me up at night.", author: "— Anonymous", color: "yellow", rot: -1.5 }
+  { text: "I came in skeptical but the Vogtle cost numbers really changed how I see this. 14 years is insane.", author: "\u2014 J.M.", color: "blue", rot: -2 },
+  { text: "As a parent I need human accountability. Full stop. AI can assist, not decide.", author: "\u2014 Mom of 3", color: "pink", rot: 1.5 },
+  { text: "The Boeing 737 MAX story shook me. An automation meant to improve safety killed 346 people. Now imagine that in a reactor.", author: "\u2014 Alex K.", color: "orange", rot: -1 },
+  { text: "More nuclear = less coal = cleaner air in my town. I'll take the AI if it gets us there faster.", author: "\u2014 Priya", color: "green", rot: 2 },
+  { text: "Who trains the AI? Who audits the trainers? That's what keeps me up at night.", author: "\u2014 Anonymous", color: "yellow", rot: -1.5 }
 ];
 
 function renderNotes(){
@@ -2311,7 +2527,7 @@ function renderNotes(){
     const isUser = i < notes.length;
     const rot = n.rot || ((Math.random()*4)-2);
     const safeText = escapeHtml(n.text);
-    const safeAuthor = escapeHtml(n.author || '— Anonymous');
+    const safeAuthor = escapeHtml(n.author || '\u2014 Anonymous');
     return `<div class="sticky-note color-${n.color}" style="--rot:${rot}deg">
       <div class="note-text">${safeText}</div>
       <div class="note-meta">
@@ -2413,13 +2629,25 @@ const PROMPTS = [
 
 const REPLIES_KEY = 'nuclearAI_replies_v1';
 let currentPromptIdx = 0;
+let firebaseReplies = null;
 
 function loadReplies(){
+  if(firebaseReplies) return JSON.parse(JSON.stringify(firebaseReplies));
   try{ return JSON.parse(localStorage.getItem(REPLIES_KEY)) || {}; }
   catch(e){ return {}; }
 }
 function saveReplies(r){
   try{ localStorage.setItem(REPLIES_KEY, JSON.stringify(r)); }catch(e){}
+  const ref = fbRef('replies');
+  if(ref) ref.set(r);
+}
+
+function initFirebaseReplies(){
+  if(!firebaseReady) return;
+  fbListen('replies', data => {
+    firebaseReplies = data || {};
+    showPrompt(currentPromptIdx);
+  });
 }
 
 function showPrompt(idx){
@@ -2501,6 +2729,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
   initNoteForm();
   renderNotes();
   initPromptTabs();
+  restoreFeedbackState();
+  // Firebase real-time listeners (no-op if Firebase not configured)
+  initFirebasePoll();
+  initFirebaseNotes();
+  initFirebaseReplies();
+  initFirebaseRatings();
 });
 </script>
 </body>
